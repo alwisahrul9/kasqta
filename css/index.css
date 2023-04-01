@@ -1,0 +1,155 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #292929;
+    color: white;
+}
+
+h1 {
+    margin: 0;
+}
+
+nav h1 {
+    font-size: 60px;
+    font-weight: 600;
+}
+
+nav {
+    padding: 20px 60px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    font-weight: 700;
+    margin: 0;
+    transition: .3s;
+}
+
+a:hover {
+    color: #F7B733;
+}
+
+section {
+    padding: 80px 100px;
+}
+
+#regis-btn {
+    padding: 15px 25px;
+    width: 250px;
+    margin-top: 50px;
+    outline: none;
+    border-radius: 100px;
+    border: none;
+    color: white;
+    background-color: #F7B733;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+#aboutUs-btn {
+    display: none;
+}
+
+section div h1 {
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+section div p {
+    font-size: 25px;
+    margin: 0;
+}
+
+section div img {
+    width: 700px;
+}
+
+@media screen and (min-width: 861px) and (max-width: 1200px) {
+    section div img {
+        width: 500px;
+    }
+
+    nav {
+        padding: 50px 30px;
+    }
+    
+    section {
+        padding: 150px 30px;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 860px) {
+    section div img {
+        width: 350px;
+    }
+
+    nav {
+        padding: 20px 20px;
+    }
+    
+    section {
+        padding: 150px 30px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+
+    nav {
+        padding: 10px 20px;
+    }
+
+    nav h1 {
+        font-size: 40px;
+        font-weight: 600;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+        font-size: 10px;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    section {
+        padding: 60px 10px;
+    }
+
+    section div p {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    main section {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    section div img {
+        width: 300px;
+        margin-bottom: 10px;
+    }
+
+    #regis-btn {
+        padding: 10px 20px;
+        width: 250px;
+        font-size: 20px;
+    }
+
+    nav a {
+        display: none;
+    }
+
+    #aboutUs-btn {
+        display: block;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        color: white;
+    }
+}

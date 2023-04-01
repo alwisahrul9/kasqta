@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Koleksi Kas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/table-kas.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <header>
+        <nav class="d-flex align-items-center justify-content-between">
+            <h1>KasQta</h1>
+            <button class="profil-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Profil Menu -->
+    <div class="profil-menu">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#lihatProfil">Lihat Profil</button>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#editProfil">Edit Profil</button>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#logoutModal" id="logout-btn">Logout</button>
+    </div>
+
+    <!-- Modal Lihat Profil -->
+    <div class="modal fade" id="lihatProfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Profil</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6>Nama Lengkap</h6>
+                <p>Alwi Sahrul Al Falah</p>
+                <h6 class="mt-4">No. Handphone</h6>
+                <p>+6280129836712</p>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Modal Edit Profil -->
+    <div class="modal fade" id="editProfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Profil</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger" id="error" style="display: none;"></div>
+                <div class="alert alert-success" id="successAuth" style="display: none;"></div>
+                
+                <div class="verif-form">
+
+                    <div class="verif-input">
+                        <label for="nohp">Nomor Handphone</label>
+                        <input type="text" name="nohp" id="nomor-hp" placeholder="+62" value="+62" required>
+                        <div class="d-flex justify-content-center">
+                            <div class="mb-2" id="recaptcha-container"></div>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-primary mb-3" onclick="sendOTP()">Minta OTP</button><br>
+                        </div>
+                    </div>
+
+
+                    <div class="verif">
+                        <label for="verification">OTP</label>
+                        <input type="text" name="password" id="verification" placeholder="Masukkan OTP" required>
+                        <div class="text-center">
+                            <button type="submit" id="verif-btn" onclick="verify()">Verifikasi</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <form action="" id="form1" class="form">
+                    <label for="nohp">Nomor Handphone</label>
+                    <input type="text" name="nohp" id="noHp" placeholder="+62" readonly>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Masukkan Password" required>
+                    <div class="text-center">
+                        <button type="submit">Perbarui</button>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Modal Logout Profil -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <h5>Anda Yakin akan Logout?</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="" class="btn btn-danger">Keluar</a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Modal Hapus Buku -->
+    <div class="modal fade" id="hapusBukuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <h5>Anda Yakin Hapus Buku Ini?</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="" class="btn btn-danger">Keluar</a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <main>
+       <section>
+        <div class="row">
+            <div class="col-lg-6 mt-4 mb-4">
+                <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non necessitatibus doloribus debitis facere libero officia?</h2>
+            </div>
+        </div>
+        
+        <div class="tools1">
+            <button type="button" id="new-btn" data-bs-toggle="modal" data-bs-target="#tambahBuku">
+                Tambah Transaksi
+            </button>
+            <button class="setting-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+                    <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+                </svg>
+            </button>
+            <div class="delete-book">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#hapusBukuModal">Hapus Buku</button>
+            </div>
+        </div>
+
+        <div class="tools2">
+            <form action="" id="searchBook">
+                <input type="search" placeholder="Cari Nama">
+            </form>
+
+            <div class="filter-menu">
+                <button id="close-filter">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                    </svg>
+                </button>
+
+                <form action="" class="filter">
+                    <input type="date" name="" id="">
+                    <span>/</span>
+                    <input type="date" name="" id="">
+                    <button type="submit" class="btn btn-primary ps-4 pe-4">Saring</button>
+                </form>
+            </div>
+            
+
+            <button class="btn btn-primary mb-3" id="filter-btn">Urutkan</button>
+        </div>
+        
+        <!-- Modal Tambah Transaksi -->
+        <div class="modal fade" id="tambahBuku" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-ti tle fs-5" id="exampleModalLabel">Tambah Transaksi</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body insert-transaksi">
+                        <form action="">
+                            <label for="tanggal">Tanggal</label>
+                            <input type="date" name="" id="tanggal">
+                            <label for="namaTransaksi">Nama Transaksi</label>
+                            <input type="text" name="" id="tanggal">
+                            <label for="tanggal">Pemasukkan</label>
+                            <input type="number" name="" id="tanggal">
+                            <label for="tanggal">Pengeluaran</label>
+                            <input type="number" name="" id="tanggal">
+                            <div class="d-flex justify-content-end">
+                                <button type="button" id="close-btn" data-bs-dismiss="modal">Close</button>
+                                <button type="button" id="new-btn">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                  <tr class="text-center">
+                    <th scope="col">No</th>
+                    <th scope="col">Tanggal</th>
+                    <th scope="col">Transaksi</th>
+                    <th scope="col">Pemasukkan</th>
+                    <th scope="col">Pengeluaran</th>
+                    <th scope="col" class="ps-5 pe-5">Saldo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row" class="text-center">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Otto</td>
+                    <td class="text-center">Rp. 100.000</td>
+                  </tr>
+                  <tr>
+                    <td colspan="5" class="p-2 text-light fw-medium bg-secondary">Sisa Saldo</td>
+                    <td class="text-center fw-medium">Rp 100.000</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+       </section>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyAzxkC3Ep_KHLTh0VPhGgt_IYe9pxUqCkc",
+            authDomain: "testotp-db2b0.firebaseapp.com",
+            projectId: "testotp-db2b0",
+            storageBucket: "testotp-db2b0.appspot.com",
+            messagingSenderId: "824617824880",
+            appId: "1:824617824880:web:dbaf2b0555f18137f57ab5",
+            measurementId: "G-QNB789TTB6"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    
+    <script type="text/javascript">
+        window.onload = function() {
+            render();
+        };
+
+        function render() {
+            window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+            recaptchaVerifier.render();
+        }
+
+        function sendOTP() {
+            var number = $("#nomor-hp").val();
+            firebase.auth().signInWithPhoneNumber(number, window.recaptchaVerifier).then(function(confirmationResult) {
+                window.confirmationResult = confirmationResult;
+                coderesult = confirmationResult;
+                console.log(coderesult);
+                const otpForm = document.querySelector('.verif');
+                const verifInput = document.querySelector('.verif-input');
+                verifInput.classList.add('verif-input-Hidden');
+                otpForm.classList.add('verifOpen');
+                $("#successAuth").text("OTP Terkirim");
+                $("#successAuth").show();
+            }).catch(function(error) {
+                $("#error").text(error.message);
+                $("#error").show();
+            });
+        }
+
+        function verify() {
+            const createNo = document.getElementById('nomor-hp').value;
+            const verifForm = document.querySelector('.verif-form');
+            const form = document.querySelector('.form');
+            var code = $("#verification").val();
+            coderesult.confirm(code).then(function(result) {
+                var user = result.user;
+                console.log(user);
+                verifForm.classList.add('verif-form-hidden');
+                form.classList.add('formShow');
+                $("#successOTP").text("OTP Berhasil");
+                $("#successOTP").show();
+                const isian = document.getElementById('form1').noHp.value = createNo;
+            }).catch(function(error) {
+                $("#error").text("OTP Salah! Harap Masukkan OTP dengan Benar");
+                $("#error").show();
+            });
+        }
+    </script>
+
+    <script>
+        const profilBtn = document.querySelector('.profil-btn');
+        const profilMenu = document.querySelector('.profil-menu');
+        const profilSvg = document.querySelector('.profil-btn svg');
+        const settingBtn = document.querySelector('.setting-btn');
+        const deleteBook = document.querySelector('.delete-book');
+        const gearLogo = document.querySelector('.setting-btn svg');
+        const filterbtn = document.querySelector('#filter-btn');
+        const filterMenu = document.querySelector('.filter-menu');
+        const closeMenu = document.querySelector('#close-filter');
+
+        profilBtn.addEventListener('click', function(){
+            profilMenu.classList.toggle('drop')
+            profilSvg.classList.toggle('drop')
+        })
+
+        settingBtn.addEventListener('click', function(){
+            deleteBook.classList.toggle('opened');
+            gearLogo.classList.toggle('opened');
+        })
+
+        filterbtn.addEventListener('click', function(){
+            filterMenu.style.transform = "translateY(0)";
+        })
+
+        closeMenu.addEventListener('click', function(){
+            filterMenu.style.transform = "translateY(100%)";
+        })
+    </script>
+  </body>
+</html>

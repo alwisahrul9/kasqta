@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Koleksi Kas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/kas.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <header>
+        <nav class="d-flex align-items-center justify-content-between">
+            <h1>KasQta</h1>
+            <button class="profil-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Profil Menu -->
+    <div class="profil-menu">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#lihatProfil">Lihat Profil</button>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#editProfil">Edit Profil</button>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#logoutModal" id="logout-btn">Logout</button>
+    </div>
+
+    <!-- Modal Lihat Profil -->
+    <div class="modal fade" id="lihatProfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Profil</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6>Nama Lengkap</h6>
+                <p>Alwi Sahrul Al Falah</p>
+                <h6 class="mt-4">No. Handphone</h6>
+                <p>+6280129836712</p>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Modal Edit Profil -->
+    <div class="modal fade" id="editProfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Profil</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body edit-profil">
+                <form action="">
+                    <label for="tanggal">Tanggal</label>
+                    <input type="date" name="" id="tanggal">
+                    <label for="namaTransaksi">Nama Transaksi</label>
+                    <input type="text" name="" id="tanggal">
+                    <label for="tanggal">Pemasukkan</label>
+                    <input type="number" name="" id="tanggal">
+                    <label for="tanggal">Pengeluaran</label>
+                    <input type="number" name="" id="tanggal">
+                    <div class="d-flex justify-content-end">
+                        <button type="button" id="close-btn" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="newBook-btn">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Modal Logout Profil -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <h5>Anda Yakin akan Logout?</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="" class="btn btn-danger">Keluar</a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <main>
+       <section>
+        <!-- Button trigger modal -->
+        <button type="button" id="newBook-btn" data-bs-toggle="modal" data-bs-target="#tambahBuku">
+            Tambah Buku
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="tambahBuku" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Buku</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <input type="text" placeholder="Nama Buku" name="" id="input-book">
+                        <div class="d-flex justify-content-end">
+                            <button type="button" id="newBook-btn">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="kas-book">
+            <a href="">
+                <div class="card-book">
+                    <img src="media/book-1.png" alt="book">
+                    <h5>Buku 1</h5>
+                </div>
+            </a>
+        </div>
+       </section>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script>
+        const profilBtn = document.querySelector('.profil-btn');
+        const profilMenu = document.querySelector('.profil-menu');
+        const profilSvg = document.querySelector('.profil-btn svg');
+
+        profilBtn.addEventListener('click', function(){
+            profilMenu.classList.toggle('drop')
+            profilSvg.classList.toggle('drop')
+        })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <header>
+        <nav class="d-flex align-items-center justify-content-between">
+            <h1>KasQta</h1>
+            <a href="about-us.html">About Us</a>
+            <button id="aboutUs-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-file-earmark-person-fill" viewBox="0 0 16 16">
+                    <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm2 5.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-.245S4 12 8 12s5 1.755 5 1.755z"/>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="d-flex align-items-center justify-content-between">
+            <div>
+                <h1>HELLO CASH COMMANDER!</h1>
+                <p>Optimize Finances,</p>
+                <p>Manage Cash Efficiently!</p>
+                <button id="regis-btn">Register Now</button>
+            </div>
+            <div>
+                <img src="media/photo.png" alt="icon">
+            </div>
+        </section>
+
+        <section>
+            <h1 class="text-center mb-4">What's KasQta?</h1>
+            <p class="text-center">Website kami hadir untuk membantu Anda mengatasi tantangan manajemen keuangan yang sering Anda hadapi.
+                Kami menawarkan solusi manajemen kas yang efektif dan mudah digunakan untuk membantu Anda mengoptimalkan
+                pengelolaan keuangan Anda. Dengan solusi kami, Anda akan dapat mengatur pengeluaran dengan bijak,
+                dan membuat keputusan keuangan yang tepat.
+            </p>
+        </section>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script>
+        const register = document.getElementById('regis-btn');
+        const aboutBtn = document.getElementById('aboutUs-btn');
+
+        register.addEventListener('click', function(){
+            location.href = 'login-page.html';
+        })
+
+        aboutBtn.addEventListener('click', function(){
+            location.href = 'about-us.html';
+        })
+        
+    </script>
+  </body>
+</html>
